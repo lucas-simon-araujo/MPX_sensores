@@ -2,11 +2,8 @@
 //Incluindo biblioteca
 #include <MPX.h>
 
-//Definindo construtor
-char sensor = "MPXV7002DP";
-float Vs = 5;
-int pino = A0;
-MPX mpxv7002dp(sensor,Vs,pino);
+//Definindo construtor(sensor, Vs, pino)
+MPX mpxv7002dp('MPXV7002DP',5,A0);
 
 //Definindo o total de amostras a serem feitas
 int amostrastotal=10;
@@ -22,18 +19,21 @@ int amostras = 10;
 float rho = 1.6;
 
 void setup() {
-  // put your setup code here, to run once:
+  //Inicializando comunicação serial a uma taxa de 9600 bauds(bits/s)
   Serial.begin(9600);
-  
-}
+ }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  for(int i = 0; i < amostrastotal, i++){
+  //Iterando pelo número de amostras definido
+  for(int i = 0; i < amostrastotal; i++){
+    //Função da biblioteca que recebe o número de amostras para média e retorna o delta p
    float deltaP = mpxv7002dp.deltap(amostras);
+   //Função da biblioteca que recebe o número de amostras para média e o rho e retorna a velocidade
    float velocidade = mpxv7002dp.pitot(amostras,rho);
+   //Exibindo resultados no monitor Serial
    Serial.println(deltaP);
-   Serial.println(velocidade;)
+   Serial.println(velocidade);
+   //Espera entre as medições definida pela frequência de amostragem
    delay(t);
   }
 }
