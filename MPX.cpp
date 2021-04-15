@@ -7,7 +7,6 @@
 //A resolver: 
 //-Criar função que calcule o offset (melhor fora ou dentro das leituras (dificuldade de separar iterações de erro de iterações de média)?)
 //-Definir frequencia de amostragem, número de amostras, amostras para obter leitura média, amostras para obter erro médio
-//-Aplicar todos os coeficientes (m,b) dos sensores com um switch...case para que o usuário possa apenas escolher o sensor
 
 //Importando o arquivo .h
 #include <MPX.h>
@@ -34,6 +33,24 @@ float MPX::deltap(int amostras){
     //para MPXV7002DP
     float m = 1; //sensibilidade/coeficiente angular da tensão em relação a pressão/diferença de pressão
     float b= _Vs/2; //intersecção/coeficiente linear da tensão em relação a pressão/diferença de pressão
+  }
+
+  else if (_sensor == 'MPX4250DP'){
+    //para MPXV7002DP
+    float m = 0.00369*_Vs; //sensibilidade/coeficiente angular da tensão em relação a pressão/diferença de pressão
+    float b= 0.04*_Vs; //intersecção/coeficiente linear da tensão em relação a pressão/diferença de pressão
+  }
+
+  else if (_sensor == 'MPX5500DP'){
+    //para MPXV7002DP
+    float m = 0.0018*_Vs; //sensibilidade/coeficiente angular da tensão em relação a pressão/diferença de pressão
+    float b= 0.04*_Vs; //intersecção/coeficiente linear da tensão em relação a pressão/diferença de pressão
+  }
+
+  else if (_sensor == 'MPX5700DP'){
+    //para MPXV7002DP
+    float m = 0.0012858*_Vs; //sensibilidade/coeficiente angular da tensão em relação a pressão/diferença de pressão
+    float b= 0.04*_Vs; //intersecção/coeficiente linear da tensão em relação a pressão/diferença de pressão
   }
   
   // inicializa as variáveis que vão receber os valores:
@@ -67,6 +84,24 @@ float MPX::pitot(){
     //para MPXV7002DP
     float m = 1; //sensibilidade/coeficiente angular da tensão em relação a pressão/diferença de pressão
     float b= _Vs/2; //intersecção/coeficiente linear da tensão em relação a pressão/diferença de pressão
+  }
+
+  else if (_sensor == 'MPX4250DP'){
+    //para MPXV7002DP
+    float m = 0.00369*_Vs; //sensibilidade/coeficiente angular da tensão em relação a pressão/diferença de pressão
+    float b= 0.04*_Vs; //intersecção/coeficiente linear da tensão em relação a pressão/diferença de pressão
+  }
+
+  else if (_sensor == 'MPX5500DP'){
+    //para MPXV7002DP
+    float m = 0.0018*_Vs; //sensibilidade/coeficiente angular da tensão em relação a pressão/diferença de pressão
+    float b= 0.04*_Vs; //intersecção/coeficiente linear da tensão em relação a pressão/diferença de pressão
+  }
+
+  else if (_sensor == 'MPX5700DP'){
+    //para MPXV7002DP
+    float m = 0.0012858*_Vs; //sensibilidade/coeficiente angular da tensão em relação a pressão/diferença de pressão
+    float b= 0.04*_Vs; //intersecção/coeficiente linear da tensão em relação a pressão/diferença de pressão
   }
   
   // inicializa as variáveis que vão receber os valores:
